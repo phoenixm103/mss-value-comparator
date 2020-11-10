@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: logservice
-  name: logservice
-  namespace: logservice
+    app: value-comparator
+  name: value-comparator
+  namespace: value-comparator
 spec:
   ports:
-    - name: 6090-tcp
-      port: 6090
+    - name: 6091-tcp
+      port: 6091
       protocol: TCP
-      targetPort: 6090
+      targetPort: 6091
   selector:
     deploymentconfig: logservice
   type: ClusterIP

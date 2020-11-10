@@ -21,15 +21,10 @@ pipeline{
         		echo 'Static analysis completed.'
       		}
     	}
-    	stage ('build') {
-      		steps{
-        		sh "mvn clean package -DskipTests"       
-      		}
-    	}
     	stage ('build image') {
       		steps{
         		sh '''
-            		oc start-build ekyc-build --from-dir=. --follow
+            		oc start-build value-comparator-build --from-dir=. --follow
            		'''
       		}
     	}    

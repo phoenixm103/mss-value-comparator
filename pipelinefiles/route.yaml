@@ -2,15 +2,15 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: logservice
-  name: logservice
-  namespace: logservice
+    app: value-comparator
+  name: value-comparator
+  namespace: value-comparator
 spec:
-  host: logservice-maxis.nagadpay.com 
+  host: value-comparator-maxis.nagadpay.com 
   port:
-    targetPort: 6090-tcp
+    targetPort: 6091-tcp
   to:
     kind: Service
-    name: logservice
+    name: value-comparator
     weight: 100
   wildcardPolicy: None

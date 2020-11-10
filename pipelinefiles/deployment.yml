@@ -2,15 +2,15 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: logservice
-  name: logservice
-  namespace: logservice
+    app: value-comparator
+  name: value-comparator
+  namespace: value-comparator
 spec:
   replicas: 1
   selector:
 
-    app: logservice
-    deploymentconfig: logservice
+    app: value-comparator
+    deploymentconfig: value-comparator
   strategy:
     activeDeadlineSeconds: 21600
     resources: {}
@@ -19,13 +19,13 @@ spec:
   template:
     metadata:
       labels:
-        app: logservice
-        deploymentconfig: logservice
+        app: value-comparator
+        deploymentconfig: value-comparator
     spec:
       containers:
-        - image: docker-registry.default.svc:5000/logservice/logservice
+        - image: docker-registry.default.svc:5000/value-comparator/value-comparator
           imagePullPolicy: Always
-          name: logservice
+          name: value-comparator
           ports:
             - containerPort: 6090
               protocol: TCP
@@ -39,9 +39,9 @@ spec:
     - imageChangeParams:
         automatic: true
         containerNames:
-          - logservice
+          - value-comparator
         from:
           kind: ImageStreamTag
-          name: 'logservice:latest'
-          namespace: logservice
+          name: 'value-comparator:latest'
+          namespace: value-comparator
       type: ImageChange

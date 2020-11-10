@@ -2,16 +2,16 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    build: logservice-build
-  name: logservice-build
-  namespace: logservice
+    build: value-comparator-build
+  name: value-comparator-build
+  namespace: value-comparator
 spec:
   failedBuildsHistoryLimit: 5
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: 'logservice:latest'
+      name: 'value-comparator:latest'
   postCommit: {}
   resources: {}
   runPolicy: Serial
