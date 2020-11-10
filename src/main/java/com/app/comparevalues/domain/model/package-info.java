@@ -1,0 +1,1 @@
+package com.app.comparevalues.domain.model;

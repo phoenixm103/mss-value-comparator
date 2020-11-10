@@ -1,0 +1,1 @@
+package com.app.comparevalues.adapter.in.model;
