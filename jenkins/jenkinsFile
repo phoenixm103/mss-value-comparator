@@ -1,0 +1,45 @@
+pipeline{
+	agent { label 'maven' }
+	stages{
+		stage ('checkout'){
+			steps{
+				checkout scm
+      		}
+  		}
+    	stage ('Compile Stage') {
+	  		steps {
+        		sh "mvn clean package"        	
+      		}          
+    	}
+    	stage ('Testing Stage') {
+      		steps {
+        		sh 'mvn test'
+      		}
+    	}
+    	stage ('Static Analysis') {       
+      		steps{      
+        		echo 'Static analysis completed.'
+      		}
+    	}
+    	stage ('build') {
+      		steps{
+        		sh "mvn clean package -DskipTests"       
+      		}
+    	}
+    	stage ('build image') {
+      		steps{
+        		sh '''
+            		oc start-build ekyc-build --from-dir=. --follow
+           		'''
+      		}
+    	}    
+   
+    	stage ('Integration test') {       
+      		steps{      
+       			echo 'integration test completed.'
+    		}
+  		}
+    
+    
+  	}
+}

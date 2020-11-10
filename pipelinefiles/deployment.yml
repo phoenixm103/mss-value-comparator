@@ -1,0 +1,47 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: logservice
+  name: logservice
+  namespace: logservice
+spec:
+  replicas: 1
+  selector:
+
+    app: logservice
+    deploymentconfig: logservice
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: logservice
+        deploymentconfig: logservice
+    spec:
+      containers:
+        - image: docker-registry.default.svc:5000/logservice/logservice
+          imagePullPolicy: Always
+          name: logservice
+          ports:
+            - containerPort: 6090
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - logservice
+        from:
+          kind: ImageStreamTag
+          name: 'logservice:latest'
+          namespace: logservice
+      type: ImageChange

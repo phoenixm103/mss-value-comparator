@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: logservice
+  name: logservice
+  namespace: logservice
+spec:
+  ports:
+    - name: 6090-tcp
+      port: 6090
+      protocol: TCP
+      targetPort: 6090
+  selector:
+    deploymentconfig: logservice
+  type: ClusterIP

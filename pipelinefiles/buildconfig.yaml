@@ -1,0 +1,25 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: logservice-build
+  name: logservice-build
+  namespace: logservice
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'logservice:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    type: Binary
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'openjdk:8-jdk-alpine'
+    type: Docker
