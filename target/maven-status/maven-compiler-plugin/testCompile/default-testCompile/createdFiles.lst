@@ -1,0 +1,4 @@
+com/app/comparevalues/unittest/application/service/CompareValueServiceTest.class
+com/app/comparevalues/adapter/in/controller/CompareValueControllerTest.class
+com/app/MssValueComparatorApplicationTests.class
+com/app/comparevalues/unittest/application/service/CompareInputValueTest.class
