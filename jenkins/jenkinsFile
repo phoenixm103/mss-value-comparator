@@ -24,7 +24,7 @@ pipeline{
     	stage ('build image') {
       		steps{
         		sh '''
-            		oc start-build value-comparator-build --from-dir=. --follow
+            		oc start-build valuecomparator-build --from-dir=. --follow
            		'''
       		}
     	}    
