@@ -2,15 +2,15 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: value-comparator
-  name: value-comparator
-  namespace: value-comparator
+    app: valuecomparator
+  name: valuecomparator
+  namespace: valuecomparator
 spec:
   replicas: 1
   selector:
 
-    app: value-comparator
-    deploymentconfig: value-comparator
+    app: valuecomparator
+    deploymentconfig: valuecomparator
   strategy:
     activeDeadlineSeconds: 21600
     resources: {}
@@ -19,13 +19,13 @@ spec:
   template:
     metadata:
       labels:
-        app: value-comparator
-        deploymentconfig: value-comparator
+        app: valuecomparator
+        deploymentconfig: valuecomparator
     spec:
       containers:
-        - image: docker-registry.default.svc:5000/value-comparator/value-comparator
+        - image: docker-registry.default.svc:5000/valuecomparator/valuecomparator
           imagePullPolicy: Always
-          name: value-comparator
+          name: valuecomparator
           ports:
             - containerPort: 6090
               protocol: TCP
@@ -39,9 +39,9 @@ spec:
     - imageChangeParams:
         automatic: true
         containerNames:
-          - value-comparator
+          - valuecomparator
         from:
           kind: ImageStreamTag
-          name: 'value-comparator:latest'
-          namespace: value-comparator
+          name: 'valuecomparator:latest'
+          namespace: valuecomparator
       type: ImageChange

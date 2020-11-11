@@ -2,16 +2,16 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    build: value-comparator-build
-  name: value-comparator-build
-  namespace: value-comparator
+    build: valuecomparator-build
+  name: valuecomparator-build
+  namespace: valuecomparator
 spec:
   failedBuildsHistoryLimit: 5
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: 'value-comparator:latest'
+      name: 'valuecomparator:latest'
   postCommit: {}
   resources: {}
   runPolicy: Serial

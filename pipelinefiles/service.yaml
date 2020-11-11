@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: value-comparator
-  name: value-comparator
-  namespace: value-comparator
+    app: valuecomparator
+  name: valuecomparator
+  namespace: valuecomparator
 spec:
   ports:
     - name: 6091-tcp
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       targetPort: 6091
   selector:
-    deploymentconfig: logservice
+    deploymentconfig: valuecomparator
   type: ClusterIP

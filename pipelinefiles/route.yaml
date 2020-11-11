@@ -2,15 +2,15 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: value-comparator
-  name: value-comparator
-  namespace: value-comparator
+    app: valuecomparator
+  name: valuecomparator
+  namespace: valuecomparator
 spec:
-  host: value-comparator-maxis.nagadpay.com 
+  host: valuecomparator-maxis.nagadpay.com 
   port:
     targetPort: 6091-tcp
   to:
     kind: Service
-    name: value-comparator
+    name: valuecomparator
     weight: 100
   wildcardPolicy: None
