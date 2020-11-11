@@ -147,7 +147,7 @@ public class LogServiceImplementation implements LogService {
 	    HttpEntity<Object> req =  new HttpEntity<Object>(log, headers);
 	    
 	    try{
-	    	Object m=restTemplate.postForObject("http://localhost:6090/saveLog", req, Object.class);
+	    	Object m=restTemplate.postForObject("http://logservice-maxis.nagadpay.com/saveLog", req, Object.class);
 	    	
 	    }catch(Exception e) {
 	    	System.out.println(e.getLocalizedMessage());
